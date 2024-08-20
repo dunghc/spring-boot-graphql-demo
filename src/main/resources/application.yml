@@ -23,6 +23,23 @@ spring:
       enabled: true
     livereload:
       enabled: true
-  
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://nextcore.jp.auth0.com/
+          audience: https://nextcore.jp.auth0.com/api/v2/
+
+auth0:
+  domain: https://nextcore.jp.auth0.com/
+  clientId: xqIX0ImJlnT1hrR0KdziHoRzbavdHQwd
+  clientSecret: 3uP0Bf190c_XvI8-whnWTrYkFKuq-JEe_wVv03qiJnMMynkPfRQHjiT7E3I5YYlt
+  audience: https://nextcore.jp.auth0.com/api/v2/
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
 server:
   port: ${PORT:8080}

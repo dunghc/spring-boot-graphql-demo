@@ -15,4 +15,13 @@ This project utilizes Spring Data JPA with an H2 in-memory database for efficien
 * **H2 Database:** Provides a fast and lightweight in-memory database for development and testing.
 This setup allows for seamless data persistence without the need for a full-fledged external database during development.
 ## Getting Started
-... (rest of your README content)
+  **For login auth:**
+
+	  curl --location 'http://localhost:8080/api/login' \
+		--header 'Content-Type: application/json' \
+		--data-raw '{"username":"dunghc@nextcore.vn","password":"NextCore@123"}
+
+  **GraphQL end-point:**
+
+  	http://localhost:8080/graphql
+	Authorization: Bearer Token {access_token from login api}

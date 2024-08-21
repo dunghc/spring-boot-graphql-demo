@@ -4,6 +4,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import com.example.demo.domain.Department;
 import com.example.demo.domain.Employee;
@@ -14,6 +15,7 @@ import com.example.demo.filter.FilterField;
 import com.example.demo.repository.DepartmentRepository;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.repository.OrganizationRepository;
+import com.example.demo.exceptions.GraphQLCustomException;
 
 @Controller
 public class EmployeeController {
@@ -35,7 +37,7 @@ public class EmployeeController {
 
     @QueryMapping
     public Employee employee(@Argument Integer id) {
-        return employeeRepository.findById(id).orElseThrow();
+        return employeeRepository.findById(id).orElseThrow(() -> new GraphQLCustomException("User not found", HttpStatus.NOT_FOUND));
     }
 
     @MutationMapping
